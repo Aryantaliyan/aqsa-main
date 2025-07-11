@@ -8,10 +8,10 @@
 }
 :root{
     --color-pink: #feecea;
-    --color-white: #fff;
-    --color-black: #333;
-    --color-text-pink: #FF7882;
-    --color-heart: #FF7882;
+    --color-white: #ffffff;
+    --color-black: #333333;
+    --color-text-pink: #78c5ff;
+    --color-heart: #ff78a7;
     --color-bg-letter: #fff8e4;
     --color-border: #DACCBF;
 }
@@ -794,15 +794,60 @@ body {
         width: 76px !important;
     }
 
+    .date__of__birth {
+        position: relative;
+        border: 3px solid var(--color-black);
+        transform: translateY(0px) !important;
+        z-index: 1;
+        opacity: 1 !important;
+        visibility: visible !important;
+        width: 250px !important;
+        height: 45px !important;
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .date__of__birth span {
+        font-size: 1rem !important;
+        margin: 0px 10px !important;
+        font-weight: bold;
+    }
+
+    .date__of__birth i {
+        font-size: 0.8rem;
+        margin: 0 5px;
+    }
+
+    /* Ensure left column elements are properly centered on mobile */
+    .content .left {
+        width: 100%;
+        align-items: center;
+    }
+
+    /* Sound popup mobile styles */
+    .sound-popup-content {
+        padding: 30px 20px;
+        width: 90%;
+        max-width: 350px;
+    }
+
+    .sound-popup-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .sound-popup-content p {
+        font-size: 1rem;
+    }
+
+    #enableSoundBtn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
 
 }
-
-
-
-
-
-
-
 .boxMail{
     position: fixed;
     background: rgb(0, 0, 0, 0.8);
@@ -836,7 +881,7 @@ body {
 }
 .boxMail .boxMail-container:hover{
     transform: rotate(-5deg);
-    filter: drop-shadow(0 0 10px #FF7882);
+    filter: drop-shadow(0 0 10px #ff78b5);
 }
 .boxMail .boxMail-container:hover .card1{
     transform: translate(-187px, -250px) rotateY(-140deg);
@@ -855,7 +900,7 @@ body {
     position: absolute;
     width: 50%;
     height: 100%;
-    background: linear-gradient(to right, #FF7882, #FF7882 63%);
+    background: linear-gradient(to right, #78a7ff, #e278ff 63%);
     color: white;
     display: flex;
     justify-content: center;
@@ -898,13 +943,6 @@ body {
     text-shadow: 0 0 5px white,
                 0 0 10px white;
 }
-.boxMail .boxMail-container .card1 h4{
-    font-family: 'Dancing Script', cursive;
-    font-size: 24px;
-    text-shadow: 0 0 10px #FF7882,
-                 0 0 20px #FF7882,
-                 0 0 30px #FF7882;
-}
 .boxMail .boxMail-container .card2{
     position: relative;
     width: 50%;
@@ -919,7 +957,7 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
-    background-color: #FF7882;
+    background-color: #ff78aa;
     transition: all 1s;
     overflow: hidden;
     font-family: "Inter", serif;
@@ -932,17 +970,39 @@ body {
 .boxMail .boxMail-container .card2 h3{
     font-family: 'Dancing Script', cursive;
     padding: 20px 0px 10px 60px;
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
     font-size: 25px;
     text-shadow: 0 0 8px #FF7882;
+}
+.boxMail .boxMail-container .card2:hover h3{
+    animation: texth3 3s forwards;
+    animation-delay: 2s;
+    transition: 1s;
+}
+@keyframes texth3{
+    0%{
+        opacity: 1;
+        visibility: visible;
+        padding: 20px 0px 10px 60px;
+    }
+    100%{
+        opacity: 1;
+        visibility: visible;
+        padding: 20px 0px 10px 152px; 
+    }
 }
 .boxMail .boxMail-container .card2 h2{
     font-family: 'Dancing Script', cursive;
     padding: 0px 20px;
     text-indent: 20px;
     font-size: 22px;
-    opacity: 1;
+    opacity: 0;
+}
+.boxMail .boxMail-container .card2:hover h2{
+    animation: texth2 2s forwards;
+    animation-delay: 4s;
+    transition: 1s;
 }
 @keyframes texth2{
     0%{
@@ -1007,4 +1067,94 @@ body {
     cursor: pointer;
     color: white;
     z-index: 10000000000000000;
+}
+
+/* Sound popup styles */
+.sound-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999999;
+}
+
+.sound-popup-content {
+    background: linear-gradient(135deg, #78c5ff, #ff78a7);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 3px solid white;
+    animation: popupBounce 0.5s ease-out;
+}
+
+@keyframes popupBounce {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.sound-popup-content h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.sound-popup-content p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#enableSoundBtn {
+    background: linear-gradient(135deg, #ff78a7, #78c5ff);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid white;
+}
+
+#enableSoundBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #ff5a8a, #5ab0ff);
+}
+
+#enableSoundBtn:active {
+    transform: translateY(-1px);
+}
+
+/* Animation control */
+.animations-paused * {
+    animation-play-state: paused !important;
+}
+
+/* Exception for sound popup */
+.sound-popup,
+.sound-popup * {
+    animation-play-state: running !important;
 }
